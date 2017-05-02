@@ -1,0 +1,12 @@
+[14-Mar-2017 13:52:42 America/El_Salvador] PHP Notice:  Undefined index: empresa in /home/gigacorp/public_html/consultorio/modulos/historial_medico/index.php on line 49
+[14-Mar-2017 13:52:42 America/El_Salvador] PHP Notice:  Undefined variable: strMenuActivoPrincipal in /home/gigacorp/public_html/consultorio/menu/m_general.php on line 107
+[14-Mar-2017 13:52:42 America/El_Salvador] PHP Notice:  Undefined variable: strMenuActivoCita in /home/gigacorp/public_html/consultorio/menu/m_general.php on line 113
+[14-Mar-2017 13:52:42 America/El_Salvador] PHP Notice:  Undefined variable: strMenuActivoConsulta in /home/gigacorp/public_html/consultorio/menu/m_general.php on line 117
+[14-Mar-2017 13:52:42 America/El_Salvador] PHP Notice:  Undefined variable: strMenuActivoCaja in /home/gigacorp/public_html/consultorio/menu/m_general.php on line 120
+[14-Mar-2017 13:52:42 America/El_Salvador] PHP Notice:  Undefined variable: strMenuActivoAdministracion in /home/gigacorp/public_html/consultorio/menu/m_general.php on line 125
+[14-Mar-2017 13:53:38 America/El_Salvador] PHP Notice:  Undefined index: empresa in /home/gigacorp/public_html/consultorio/modulos/historial_medico/index.php on line 49
+[14-Mar-2017 13:53:38 America/El_Salvador] PHP Notice:  Undefined variable: strMenuActivoPrincipal in /home/gigacorp/public_html/consultorio/menu/m_general.php on line 107
+[14-Mar-2017 13:53:38 America/El_Salvador] PHP Notice:  Undefined variable: strMenuActivoCita in /home/gigacorp/public_html/consultorio/menu/m_general.php on line 113
+[14-Mar-2017 13:53:38 America/El_Salvador] PHP Notice:  Undefined variable: strMenuActivoConsulta in /home/gigacorp/public_html/consultorio/menu/m_general.php on line 117
+[14-Mar-2017 13:53:38 America/El_Salvador] PHP Notice:  Undefined variable: strMenuActivoCaja in /home/gigacorp/public_html/consultorio/menu/m_general.php on line 120
+[14-Mar-2017 13:53:38 America/El_Salvador] PHP Notice:  Undefined variable: strMenuActivoAdministracion in /home/gigacorp/public_html/consultorio/menu/m_general.php on line 125

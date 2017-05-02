@@ -1,0 +1,4 @@
+[17-Mar-2017 18:30:18 America/El_Salvador] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/gigacorp/public_html/consultorio/modulos/detalle/index.php on line 160
+[17-Mar-2017 18:30:31 America/El_Salvador] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/gigacorp/public_html/consultorio/modulos/detalle/index.php on line 160
+[28-Mar-2017 15:34:09 America/El_Salvador] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/gigacorp/public_html/consultorio/modulos/class_buscar.php on line 151
+[28-Mar-2017 15:34:09 America/El_Salvador] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home/gigacorp/public_html/consultorio/modulos/detalle/index.php on line 160
