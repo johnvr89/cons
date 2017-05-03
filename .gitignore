@@ -2,3 +2,5 @@
 .*
 !.gitignore
 modulos/php_conexion.php
+/nbproject/private/
+nbproject/

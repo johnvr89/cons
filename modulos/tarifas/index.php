@@ -48,8 +48,7 @@
            ?>
         <div id="page-wrapper" >
             <div id="page-inner">						                				
-				 <?php if(permiso($_SESSION['cod_user'],'4')==TRUE){ ?>
- 
+				 
                  <div class="panel-body" align="right">                                                                                 
                             <button type="button" class="btn btn-success btn-circle" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus fa-2x"></i>
                             </button>
@@ -254,8 +253,7 @@
                     <!--End Advanced Tables -->
                 </div>
             </div>
-                <!-- /. ROW  -->
-<?php }else{ echo mensajes("NO TIENES PERMISO PARA ENTRAR A ESTE FORMULARIO","rojo"); }?>				
+                <!-- /. ROW  -->		
         </div>               
     </div>
              <!-- /. PAGE INNER  -->
