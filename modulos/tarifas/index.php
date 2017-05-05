@@ -10,6 +10,7 @@
 	}
 	
 	$usu=$_SESSION['cod_user'];
+    $idConsultorio = $_SESSION['idConsultorio'];
 	$pa=mysql_query("SELECT * FROM cajero WHERE usu='$usu'");				
 	while($row=mysql_fetch_array($pa)){
 		$id_consultorio=$row['consultorio'];
@@ -115,7 +116,7 @@
 										$estado=limpiar($_POST['estado']);
 										
 										if(empty($_POST['id'])){
-											$oTarifa=new Proceso_Tarifas('',$nombre,$valor,$config,$estado);
+											$oTarifa=new Proceso_Tarifas('',$nombre,$valor,$config,$estado, $idConsultorio);
 											$oTarifa->crear();
 											echo mensajes('Tarifa "'.$nombre.'" Creado con Exito','verde');
 										}else{
@@ -141,9 +142,9 @@
 										<?php 
 											if(!empty($_POST['buscar'])){
 												$buscar=limpiar($_POST['buscar']);
-												$pame=mysql_query("SELECT * FROM tarifas WHERE nombre LIKE '%$buscar%' ORDER BY nombre");	
+												$pame=mysql_query("SELECT * FROM tarifas WHERE nombre LIKE '%$buscar%' and  id_consultorio = $idConsultorio  ORDER BY nombre");	
 											}else{
-												$pame=mysql_query("SELECT * FROM tarifas ORDER BY nombre");
+												$pame=mysql_query("SELECT * FROM tarifas where id_consultorio = $idConsultorio ORDER BY nombre");
 												
 											}		
 											while($row=mysql_fetch_array($pame)){

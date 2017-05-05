@@ -1,17 +1,20 @@
 <?php
+
 class Proceso_Tarifas{
 	var $id;	
 	var $nombre;	
 	var $valor;	
 	var $config;	
 	var $estado;
-	
-	function __construct($id,$nombre,$valor,$config,$estado){
+    var $idConsultorio;
+    	
+	function __construct($id,$nombre,$valor,$config,$estado, $idConsultorio){
 		$this->id=$id;						
 		$this->nombre=$nombre;						
 		$this->valor=$valor;						
 		$this->config=$config;						
 		$this->estado=$estado;	
+        $this->idConsultorio=$idConsultorio;	
 	}
 	
 	function crear(){
@@ -20,8 +23,9 @@ class Proceso_Tarifas{
 		$valor=$this->valor;					
 		$config=$this->config;					
 		$estado=$this->estado;	
+        $idConsultorio=$this->idConsultorio;	
 							
-		mysql_query("INSERT INTO tarifas (nombre,valor,config, estado)	VALUES ('$nombre','$valor','$config','$estado')");
+		mysql_query("INSERT INTO tarifas (nombre,valor,config, estado, id_consultorio)	VALUES ('$nombre','$valor','$config','$estado', '$idConsultorio')");
 	}
 	
 	function actualizar(){
