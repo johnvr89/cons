@@ -284,8 +284,17 @@
 																			}
 																		?>
 																	</select><br>																								
-																	<select class="form-control" name="consultorio" autocomplete="off" required>
-																	<option value="" selected disabled>--CONSULTORIO--</option>
+																	<select class="form-control" id="empresa" name="empresa" autocomplete="off" onchange="obtenerConsultorios();" required>
+																	<option value="" selected disabled>--EMPRESA--</option>
+																		<?php
+																			$sal=mysql_query("SELECT * FROM empresa WHERE estado= 'A'");				
+																			while($col=mysql_fetch_array($sal)){
+																				echo '<option value="'.$col['id'].'">'.$col['nombre'].'</option>';
+																			}
+																		?>													
+																	</select><br>	
+                                                                    <select class="form-control" id="consultorio" name="consultorio" autocomplete="off" required>
+                                                                        <option value="" selected disabled>--CONSULTORIO--</option>
 																		<?php
 																			$sal=mysql_query("SELECT * FROM consultorios WHERE estado='s'");				
 																			while($col=mysql_fetch_array($sal)){
@@ -398,6 +407,36 @@
     </div>
              <!-- /. PAGE INNER  -->
   </div>
+    <script type="text/javascript">
+    function obtenerConsultorios(){
+    
+        //var $contenidoAjax = $('div#contenidoAjax').html('<p><img id="cargador" src="../../img/ajax-loader.gif" /></p>');
+        
+		var idEmpresa =  document.getElementById("empresa").value;
+		var parametros = {"action":"getConsultorio","idEmpresa":idEmpresa};
+		$.ajax({
+			url:'ajax_usuarios.php',
+            method: 'POST',
+			data: parametros,
+			success:function(data){
+                
+            var options = '<option></option>';
+            $('#consultorio').html(options);
+            var json = data, obj = JSON.parse(json);
+            
+            for (var x = 0; x < obj.length; x++) {
+            
+                options += '<option value="' + obj[x]['id'] + '">' + obj[x]['reg'] + '</option>';
+            }                
+            
+            $('#consultorio').html(options);
+            //document.getElementById("horario").disabled = false;
+            //$contenidoAjax.html('');
+			}
+		})
+	}  
+    </script>   
+
    
 </body>
 </html>

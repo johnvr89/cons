@@ -147,8 +147,9 @@
                                     
 									<thead>
                                         <tr>
-                                            <th>NOMBRE</th>
-                                            <th>ESTADO</th>                                                                                      
+                                            <th>NOMBRE</th>                                                                                                                           
+                                            <th>EMPRESA</th>
+                                            <th>ESTADO</th>      
                                             <th>ACCIONES</th>
                                         </tr>
                                     </thead>
@@ -164,7 +165,8 @@
 										?>
                                         <tr class="odd gradeX">
                                             <td><?php echo $row['nombre']; ?></td>
-                                            <td><?php echo estado($row['estado']); ?></td>                                                                                   
+                                            <td><?php echo consultar('nombre', 'empresa', ' id = '.$row['empresa_id']); ?></td>
+                                            <td><?php echo estado($row['estado']); ?></td>                                                                                                                               
                                             <td class="center">
 											<div class="btn-group">
 											  <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle"><i class="fa fa-cog"></i> <span class="caret"></span></button>
