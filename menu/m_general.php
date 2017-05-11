@@ -40,7 +40,7 @@
                 <a class="navbar-brand" href="../usuarios/perfil.php"><?php echo $_SESSION['user_name']; ?></a> 
             </div>
         <div style="color: white; padding: 15px 50px 5px 50px; float: right; font-size: 16px;">
-            Consultorio: <?php echo $nombre_Consultorio; ?> :: Fecha de Acceso : <?php echo fecha(date('Y-m-d')); ?> &nbsp; 
+             <b>Establecimiento:</b> <?php echo $_SESSION['nombreEmpresa']; ?> &nbsp &#8226; &nbsp <b>Consultorio:</b> <?php echo $nombre_Consultorio; ?> &nbsp; 
             <a href="../../php_cerrar.php" class="btn btn-danger square-btn-adjust">Salir</a> 
         </div>
         </nav>
