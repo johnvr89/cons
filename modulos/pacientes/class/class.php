@@ -42,11 +42,28 @@ class Proceso_Paciente{
 		$edad=$this->edad;	
 		$sexo=$this->sexo;	
 		$email=$this->email;	
-		$estado=$this->estado;	
+		
 		$id_consultorio=$this->id_consultorio;	
+        
+        //si tiene cedula verifico si el paciente ya existe
+        if($documento)
+        {
+            $documento = consultar('documento', 'pacientes', " estado =  's' and documento = ".$documento);
+            if($documento)
+            {
+                $strMensaje = 'Paciente Ya existe.';
+                return $strMensaje;
+            }
+        }
 							
-		mysql_query("INSERT INTO pacientes (documento,seguro, nombre, direccion, telefono, edad, sexo, email, estado, consultorio) 
-					VALUES ('$documento','$seguro','$nombre','$direccion','$telefono','$edad','$sexo','$email','$estado','$id_consultorio')");
+		$insert = mysql_query("INSERT INTO pacientes (documento,seguro, nombre, direccion, telefono, edad, sexo, email, estado, consultorio) 
+					VALUES ('$documento','$seguro','$nombre','$direccion','$telefono','$edad','$sexo','$email','s','$id_consultorio')");
+        
+        if($insert)
+        {
+            return 'OK';
+        }
+        
 	}
 	
 	function actualizar(){
@@ -61,9 +78,10 @@ class Proceso_Paciente{
 		$edad=$this->edad;	
 		$sexo=$this->sexo;	
 		$email=$this->email;	
-		$estado=$this->estado;		
-		
-		mysql_query("UPDATE pacientes SET
+		$estado=$this->estado;	
+        
+        
+		$sql = "UPDATE pacientes SET
 										documento='$documento',
 										seguro='$seguro',  
 										nombre='$nombre',
@@ -73,7 +91,11 @@ class Proceso_Paciente{
 										sexo='$sexo',										
 										email='$email',
 										estado='$estado'
-									WHERE id='$id'");
+									WHERE id='$id'";
+
+		mysql_query($sql);
+        
+        
 	}
 }
 ?>

@@ -187,9 +187,18 @@ function consultar($campo,$tabla,$where){
     return $ano_diferencia;
 	}*/
 
-	function CalculaEdad($fecha)
-	{
-	list($Y,$m,$d) = explode("-",$fecha);
-	return( date("md") < $m.$d ? date("Y")-$Y-1 : date("Y")-$Y );
-	}
+   function CalculaEdad($fecha)
+   {
+       list($Y, $m, $d) = explode("-", $fecha);
+       if($Y > 0)
+       {
+           $edad = date("md") < $m . $d ? date("Y") - $Y - 1 : date("Y") - $Y;           
+       }
+       else
+       {
+           $edad = 'Pendiente';
+       }
+       return $edad;
+   }
+
 ?>

@@ -203,10 +203,10 @@
 											<div class="col-md-12">
 											<br>																																																									
 											<input class="form-control" title="Se necesita un nombre"  name="nombre" placeholder="Nombre Completo" autocomplete="off" required autofocus><br>
-											<input class="form-control" title="Se necesita una Direccion" name="direccion" placeholder="Direcci&oacute;n"  autocomplete="off" required><br>											
+											<input class="form-control" title="Se necesita una Direccion" name="direccion" placeholder="Direcci&oacute;n"  autocomplete="off" ><br>											
 											</div>
 											<div class="col-md-6">
-                                                <input class="form-control" name="documento" placeholder="C&eacute;dula" data-mask="9999999999" autocomplete="off" required><br>																																																																
+                                                <input class="form-control" name="documento" placeholder="C&eacute;dula" data-mask="9999999999" autocomplete="off" ><br>																																																																
 												<!--<select class="form-control" name="departamento" autocomplete="off" required>																					
 												<option value="" selected disabled>--ESTADO--</option>  
 													<?php
@@ -230,11 +230,7 @@
 													<option value="" selected disabled>--SEXO--</option>
 													<option value="m">Masculino</option>
 													<option value="f">Femenino</option>													
-												</select><br>	
-												<select class="form-control" name="estado" placeholder="Estado" autocomplete="off" required>						
-													<option value="s">Activo</option>
-													<option value="n">Inactivo</option>													
-												</select>                                                
+												</select>                                             
 											</div>
 											<div class="col-md-6">
 												<!--<input class="form-control" name="edad" title="Se necesita una Edad" pattern="^[0-9.!#$%&'*+/=?^_`{|}~-]*$" placeholder="Edad" autocomplete="off" required><br>
@@ -248,14 +244,14 @@
 															}
 														?>												
 												</select><br>	
+                                                <input class="form-control" name="email" placeholder="Email" autocomplete="off"><br>		
 												<div class="input-group date form_date" data-date="" data-date-format="dd/mm/yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-													<input class="form-control" size="16" type="text" placeholder="Fecha de Nacimiento" onfocus="(this.type='')"  name="edad" id="edad" onchange="calcularEdad(this.value)" required>
+													<input class="form-control" size="16" type="text" placeholder="Fecha de Nacimiento" onfocus="(this.type='')"  name="edad" id="edad" onchange="calcularEdad(this.value)" >
                                                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 													<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>                                                    
 												</div>
                                                 <br><div id="contenidoAjax">  </div>
-												<input type="hidden" id="dtp_input2" name="edad" /><br/>    
-												<input class="form-control" name="email" placeholder="Email" autocomplete="off"><br>																							 
+												<input type="hidden" id="dtp_input2" name="edad" /><br/>    																																 
 
 											</div> 																																												                                                            
 										</div> 
@@ -298,8 +294,16 @@
 										
 										if(empty($_POST['id'])){
 											$oPaciente=new Proceso_Paciente('',$documento,$seguro,$nombre,$direccion,$telefono,$edad,$sexo,$email,$estado,$id_consultorio);
-											$oPaciente->crear();
-											echo mensajes('Paciente "'.$nombre.'" Creado con Exito','verde');
+											$strMensaje = $oPaciente->crear();
+                                            if($strMensaje == 'OK')
+                                            {
+                                                echo mensajes('Paciente "'.$nombre.'" Creado con Exito','verde');
+                                            }
+                                            else
+                                            {
+                                                echo mensajes($strMensaje,'rojo');
+                                            }
+											
 										}else{
 											$id=limpiar($_POST['id']);
 											$oPaciente=new Proceso_Paciente($id,$documento,$seguro,$nombre,$direccion,$telefono,$edad,$sexo,$email,$estado,$id_consultorio);
@@ -407,7 +411,7 @@
                                         <tr class="odd gradeX">
                                             <td><i class="fa fa-user fa-2x"></i> <?php echo $row['nombre']; ?></td>
                                             <td><?php echo $row['direccion']; ?></td>
-                                            <td><?php echo CalculaEdad($row['edad']); ?></td>
+                                            <td><?php echo $edadCalculada =CalculaEdad($row['edad']); ?></td>
                                             <td><?php echo $row['telefono']; ?></td>                                           
                                             <td class="center">
 											<div class="btn-group">
@@ -449,7 +453,7 @@
 											</div><br>
 											<div class="input-group">
 												  <span class="input-group-addon">Direccion</span>
-												  <input class="form-control" title="Se necesita un nombre"  name="direccion" placeholder="Dirección" value="<?php echo $row['direccion']; ?>" autocomplete="off" required><br>											
+												  <input class="form-control" title="Se necesita un nombre"  name="direccion" placeholder="Dirección" value="<?php echo $row['direccion']; ?>" autocomplete="off" ><br>											
 											</div><br>											
 											</div>
 											<div class="col-md-6">											
@@ -485,7 +489,7 @@
 												</div><br>-->
 												<div class="input-group">
 												  <span class="input-group-addon">C&eacute;dula:</span>
-												  <input class="form-control" name="documento" value="<?php echo $row['documento']; ?>" data-mask="999-9999999-9" autocomplete="off" required><br>											
+												  <input class="form-control" name="documento" value="<?php echo $row['documento']; ?>" data-mask="9999999999" autocomplete="off" ><br>											
 											    </div><br>	
 												<div class="input-group">
 												  <span class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></span>
@@ -498,6 +502,13 @@
 													<option value="f" <?php if($row['sexo']=='f'){ echo 'selected'; } ?>>Femenino</option>												
 												</select>												
 												</div><br>	
+												<div class="input-group">
+												  <span class="input-group-addon">Estado</span>
+												  <select class="form-control" name="estado" autocomplete="off" required>
+													<option value="s" <?php if($row['estado']=='s'){ echo 'selected'; } ?>>Activo</option>
+													<option value="n" <?php if($row['estado']=='n'){ echo 'selected'; } ?>>No Activo</option>													
+												</select>												
+												</div>                                                
 											</div>
 											<div class="col-md-6">
 											<div class="input-group">
@@ -516,24 +527,18 @@
 													?>										
 												</select>											
 												</div><br>																							
-												<div class="input-group date form_date" data-link-format="yyyy-mm-dd">
-													 <span class="input-group-addon">Nac.</span>
-													<input type="text" class="form-control" name="edad" autocomplete="off" required min="1" value="<?php echo $row['edad']; ?>" readonly><br>
-													<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-													<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-												</div><br>
+                                                <div class="input-group date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                                    <input class="form-control" size="16" type="text" value="<?php if ($edadCalculada != 'Pendiente') {echo $row['edad'];} ?>"  placeholder="Fecha de Nacimiento" onfocus="(this.type='')"  name="edad" id="edad" onchange="calcularEdad(this.value)" >
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+													<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>                                                    
+												</div>
+                                                <br>
 												
 												<div class="input-group">
 												  <span class="input-group-addon">@</span>
 												  <input class="form-control" name="email" autocomplete="off" value="<?php echo $row['email']; ?>"><br>												
 												</div><br>
-												<div class="input-group">
-												  <span class="input-group-addon">Estado</span>
-												  <select class="form-control" name="estado" autocomplete="off" required>
-													<option value="s" <?php if($row['estado']=='s'){ echo 'selected'; } ?>>Activo</option>
-													<option value="n" <?php if($row['estado']=='n'){ echo 'selected'; } ?>>No Activo</option>													
-												</select>												
-												</div>
+
 											</div>                                 
                                        
 										</div> 
