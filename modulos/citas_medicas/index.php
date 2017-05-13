@@ -219,7 +219,8 @@
                                             <th>#</th>
                                             <th>PACIENTE</th>                                                                                                                              
                                             <th>FECHA DE PROXIMA CITA</th>                                                                                      
-                                            <th>MED/ASIST.</th>                                                                                      
+                                            <th>MOTIVO</th>
+                                            <th>MED/ASIST.</th>
                                             <th>STATUS</th>                                                                                      
                                             <th></th>
                                         </tr>
@@ -260,7 +261,8 @@
                                             <td><?php echo $row['id']; ?></td>
                                             <td><i class="fa fa-user fa-2x"></i> <?php echo $oPaciente->consultar('nombre'); ?></td>                                                                                   
                                             <td><?php echo fecha($row['fecha_cita']).' '.$strHorario = consultar('horario','horarios_cita',' id='.$row['horario']); ?></td>
-                                            <td><?php if ($row['id_medico'] > 0) {echo consultar('nombre','usuario',' id='.$row['id_medico']);} ?></td>  
+                                            <td><?php if ($row['id_motivo'] > 0) {echo consultar('nombre','tarifas',' id='.$row['id_motivo']);} ?></td>  
+                                            <td><?php if ($row['id_medico'] > 0) {echo consultar('nombre','usuario',' id='.$row['id_medico']);} ?></td>
 											<td><?php echo $status; ?></td>  
                                             <td class="center">
 											<div class="btn-group">
