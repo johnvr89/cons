@@ -207,24 +207,7 @@
 											</div>
 											<div class="col-md-6">
                                                 <input class="form-control" name="documento" placeholder="C&eacute;dula" data-mask="9999999999" autocomplete="off" ><br>																																																																
-												<!--<select class="form-control" name="departamento" autocomplete="off" required>																					
-												<option value="" selected disabled>--ESTADO--</option>  
-													<?php
-															$p=mysql_query("SELECT * FROM departamentos WHERE estado='s'");				
-															while($r=mysql_fetch_array($p)){
-																echo '<option value="'.$r['id'].'">'.$r['nombre'].'</option>';
-															}
-														?>												
-												</select><br>												
-												<select class="form-control" name="municipio" autocomplete="off" required>												
-													<option value="" selected disabled>--CIUDAD--</option>
-													<?php
-															$p=mysql_query("SELECT * FROM municipios WHERE estado='s' ORDER BY nombre");				
-															while($r=mysql_fetch_array($p)){
-																echo '<option value="'.$r['id'].'">'.$r['nombre'].'</option>';
-															}
-														?>	
-												</select><br>-->												
+											
                                                 <input class="form-control" name="telefono" title="Se necesita un Telefono" data-mask="9999999999" placeholder="Tel&eacute;fono" autocomplete="off" required><br>
 												<select class="form-control" name="sexo" autocomplete="off" required>
 													<option value="" selected disabled>--SEXO--</option>
@@ -284,13 +267,13 @@
 										$seguro=limpiar($_POST['seguro']);		
 										$nombre=limpiar($_POST['nombre']);		
 										$direccion=limpiar($_POST['direccion']);
-										#$departamento=limpiar($_POST['departamento']);
-										#$municipio=limpiar($_POST['municipio']);
+
 										$telefono=limpiar($_POST['telefono']);
 										$edad=limpiar($_POST['edad']);			
 										$sexo=limpiar($_POST['sexo']);															
 										$email=limpiar($_POST['email']);															
 										$estado=limpiar($_POST['estado']);
+                                        
 										
 										if(empty($_POST['id'])){
 											$oPaciente=new Proceso_Paciente('',$documento,$seguro,$nombre,$direccion,$telefono,$edad,$sexo,$email,$estado,$id_consultorio);

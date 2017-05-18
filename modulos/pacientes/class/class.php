@@ -44,20 +44,21 @@ class Proceso_Paciente{
 		$email=$this->email;	
 		
 		$id_consultorio=$this->id_consultorio;	
-        
         //si tiene cedula verifico si el paciente ya existe
         if($documento)
         {
-            $documento = consultar('documento', 'pacientes', " estado =  's' and documento = ".$documento);
-            if($documento)
+            $getDocumento = consultar('documento', 'pacientes', " estado =  's' and documento = ".$documento);
+            if($getDocumento)
             {
                 $strMensaje = 'Paciente Ya existe.';
                 return $strMensaje;
             }
         }
+        
+        $strSql = "INSERT INTO pacientes (documento,seguro, nombre, direccion, telefono, edad, sexo, email, estado, consultorio) 
+					VALUES ('$documento','$seguro','$nombre','$direccion','$telefono','$edad','$sexo','$email','s','$id_consultorio')";
 							
-		$insert = mysql_query("INSERT INTO pacientes (documento,seguro, nombre, direccion, telefono, edad, sexo, email, estado, consultorio) 
-					VALUES ('$documento','$seguro','$nombre','$direccion','$telefono','$edad','$sexo','$email','s','$id_consultorio')");
+		$insert = mysql_query($strSql);
         
         if($insert)
         {
