@@ -440,36 +440,7 @@
 											</div><br>											
 											</div>
 											<div class="col-md-6">											
-												<!--<div class="input-group">
-												  <span class="input-group-addon">Estado</span>
-												 <select class="form-control" name="departamento" onchange="pais(this.value);" autocomplete="off" required>			
-													<?php
-														$p=mysql_query("SELECT * FROM departamentos WHERE estado='s'");				
-														while($r=mysql_fetch_array($p)){
-															if($r['id']==$row['departamento']){
-																echo '<option value="'.$r['id'].'" selected>'.$r['nombre'].'</option>';
-															}else{
-																echo '<option value="'.$r['id'].'">'.$r['nombre'].'</option>';
-															}
-														}
-													?>										
-												</select>											
-												</div><br>
-												<div class="input-group">
-												  <span class="input-group-addon">Ciudad</span>
-												 <select class="form-control" name="municipio" autocomplete="off" required>											
-													<?php
-														$p=mysql_query("SELECT * FROM municipios WHERE estado='s'");				
-														while($r=mysql_fetch_array($p)){
-															if($r['id']==$row['municipio']){
-																echo '<option value="'.$r['id'].'" selected>'.$r['nombre'].'</option>';
-															}else{
-																echo '<option value="'.$r['id'].'">'.$r['nombre'].'</option>';
-															}
-														}
-													?>		
-												</select>										
-												</div><br>-->
+
 												<div class="input-group">
 												  <span class="input-group-addon">C&eacute;dula:</span>
 												  <input class="form-control" name="documento" value="<?php echo $row['documento']; ?>" data-mask="9999999999" autocomplete="off" ><br>											
