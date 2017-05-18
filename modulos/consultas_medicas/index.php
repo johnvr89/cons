@@ -22,13 +22,7 @@
 		$oConsultorio=new Consultar_Deposito($id_consultorio);
 		$nombre_Consultorio=$oConsultorio->consultar('nombre');
 	}
-	
-	######### TRAEMOS LOS DATOS DE LA EMPRESA #############
-		$pa=mysql_query("SELECT * FROM empresa WHERE id=1");				
-        if($row=mysql_fetch_array($pa)){
-			$nombre_empresa=$row['empresa'];
-		}
-	
+
 	if(!empty($_GET['del'])){
 		$id=$_GET['del'];
 		mysql_query("DELETE FROM consultas_medicas WHERE id='$id'");

@@ -23,12 +23,6 @@
 	$fecha=date('Y-m-d');
 	$hora=date('H:i:s');
 	
-	######### TRAEMOS LOS DATOS DE LA EMPRESA #############
-		$pa=mysql_query("SELECT * FROM empresa WHERE id=1");				
-        if($row=mysql_fetch_array($pa)){
-			$nombre_empresa=$row['empresa'];
-		}
-	
 	if(!empty($_GET['del'])){
 		$id=$_GET['del'];
 		mysql_query("DELETE FROM tarifas WHERE id='$id'");

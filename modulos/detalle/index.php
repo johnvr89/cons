@@ -27,15 +27,21 @@
 		$nombre_Consultorio=$oConsultorio->consultar('nombre');
 	}
 	######### TRAEMOS LOS DATOS DE LA EMPRESA #############
-		$pa=mysql_query("SELECT * FROM empresa WHERE id=1");				
+		$pa=mysql_query("SELECT * FROM empresa WHERE id=".$_SESSION['idEmpresa']);				
         if($row=mysql_fetch_array($pa)){
 			$nombre_empresa=$row['empresa'];
 			$nit_empresa=$row['nit'];
 			$dir_empresa=$row['direccion'];
-			$tel_empresa=$row['tel'].'-'.$row['fax'];
+            
+            if($row['fax'])
+            {
+                $tel_empresa=$row['telefono'].'-'.$row['fax'];
+            }
+            $tel_empresa = $row['telefono'];
+			
 			$pais_empresa=$row['pais'].' - '.$row['ciudad'];
 		}
-		######### TRAEMOS LOS DATOS DE LA EMPRESA #############
+
 		$pax=mysql_query("SELECT * FROM resumen WHERE factura='$factura'");				
         if($row=mysql_fetch_array($pax)){
 			$tipo=$row['tipo'];

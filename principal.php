@@ -19,12 +19,7 @@
 		$oConsultorio=new Consultar_Deposito($id_consultorio);
 		$nombre_Consultorio=$oConsultorio->consultar('nombre');
 	}
-	######### TRAEMOS LOS DATOS DE LA EMPRESA #############
-		$pa=mysql_query("SELECT * FROM empresa WHERE id=1");				
-        if($row=mysql_fetch_array($pa)){
-			$nombre_empresa=$row['empresa'];
-		}
-		
+
 	if(!empty($_GET['status'])){
 			$nit=limpiar($_GET['status']);
 			$cans=mysql_query("SELECT * FROM citas_medicas WHERE status='PROCESADO' and id='$nit'");

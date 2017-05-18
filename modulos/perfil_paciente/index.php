@@ -64,12 +64,18 @@
 		$nombre_deposito=$oDeposito->consultar('nombre');
 	}
 	######### TRAEMOS LOS DATOS DE LA EMPRESA #############
-		$pa=mysql_query("SELECT * FROM empresa WHERE id=1");				
+		$pa=mysql_query("SELECT * FROM empresa WHERE id=".$_SESSION['idEmpresa']);				
         if($row=mysql_fetch_array($pa)){
 			$nombre_empresa=$row['empresa'];
 			$nit_empresa=$row['nit'];
 			$dir_empresa=$row['direccion'];
-			$tel_empresa=$row['tel'].'-'.$row['fax'];
+            
+            if($row['fax'])
+            {
+                $tel_empresa=$row['telefono'].'-'.$row['fax'];
+            }
+            $tel_empresa = $row['telefono'];
+			
 			$pais_empresa=$row['pais'].' - '.$row['ciudad'];
 		}
 					
@@ -133,7 +139,7 @@
                     </td>
                     <td><br>
 					<strong>PERFIL DEL PACIENTE: </strong><?php echo $nombre; ?><br>
-                    <strong>FECHA: </strong><?php echo fecha($fecha); ?> ||  
+                    <strong>FECHA: </strong><?php echo fecha($fecha); ?> <br> 
                     <strong>HORA: </strong><?php echo date($hora); ?><br>
                     <strong>USUARIO: </strong><?php echo $cajero_nombre; ?><br>                                                    
                     </td>
@@ -156,12 +162,9 @@
 								<br>
 								<strong>PACIENTE: </strong><?php echo $nombre; ?><br>
 								<strong>DIRECCION: </strong><?php echo $direccion; ?><br>
-								<!--<strong>ESTADO: </strong><?php echo $oDepto->consultar('nombre'); ?><br>                                   
-								<strong>CIUDAD: </strong><?php echo $oMcpio->consultar('nombre'); ?><br>-->                                   
 								<strong>EDAD: </strong><?php echo CalculaEdad($edad); ?> AÑOS<br>                                   
 								<strong>SEXO: </strong><?php echo sexo($sexo); ?><br>
 								<strong>SEGURO: </strong><?php echo $oSeguro->consultar('nombre'); ?><br>
-								<strong>ENTRADA: </strong><?php echo $entrada; ?><br>                                   
 								<strong>EMAIL: </strong><?php echo $email; ?><br>                                   
 								<strong>ESTADO: </strong><?php echo estado($estado); ?><br>                                   
 								</div>
