@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 	session_start();
 	include_once "../php_conexion.php";
 	include_once "class/class.php";

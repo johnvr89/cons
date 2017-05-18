@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 
 //// Activar errores
 //ini_set('display_errors', 'On');
